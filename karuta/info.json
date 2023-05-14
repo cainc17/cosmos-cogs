@@ -1,0 +1,8 @@
+{
+    "author" : ["Akai#8199"],
+    "install_msg" : "Thanks for using the karuta cog, use `[p]help Karuta` for more info.",
+    "name" : "Karuta",
+    "short" : "Counts daily and weekly karuta drops.",
+    "description" : "Counts daily and weekly karuta drops.",
+    "tags" : ["Karuta"]
+}

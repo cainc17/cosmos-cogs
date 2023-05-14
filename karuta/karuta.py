@@ -18,7 +18,7 @@ AUTO_DROP_REGEX = re.compile(
 MIN_DROPS = 3
 DROP_ROLE_ID = 1106603803983220758
 CHECK_EMOJI = discord.PartialEmoji(name="TC_checkmark", id=1081578785075384370)
-ELEGANT_GUILD = 961115362051620884
+GUILD = 961115362051620884
 DROP_LOGS = 1106602811493462057
 
 WHITELISTED_CHANNELS = [1051328495571181588, 1106602671416299540, 1062345872647659620]
@@ -38,6 +38,9 @@ emoji = [
 
 
 class Karuta(commands.Cog):
+    __version__ = "0.1.20"
+    __author__ = "Akai#8199"
+
     def __init__(self, bot: Red):
         self.bot = bot
 
@@ -63,6 +66,13 @@ class Karuta(commands.Cog):
         )  # Assiging default values just in case something gets fucked up.
 
         asyncio.create_task(self.initialize())  # Initialize the cog.
+
+
+
+    def format_help_for_context(self, ctx: commands.Context) -> str:
+        """Thanks Sinbad!"""
+        pre_processed = super().format_help_for_context(ctx)
+        return f"{pre_processed}\n\nAuthor: {self.__author__}\nCog Version: {self.__version__}"
 
     async def initialize(self) -> None:
         await self.cache_configs()
@@ -112,7 +122,7 @@ class Karuta(commands.Cog):
         await self.bot.wait_until_ready()
 
     async def reset_daily_drops(self) -> None:
-        guild = self.bot.get_guild(ELEGANT_GUILD)
+        guild = self.bot.get_guild(GUILD)
         if not guild:
             return
 
@@ -159,7 +169,7 @@ class Karuta(commands.Cog):
                 continue
 
     async def reset_weekly_drops(self) -> None:
-        guild = self.bot.get_guild(ELEGANT_GUILD)
+        guild = self.bot.get_guild(GUILD)
         if not guild:
             return
 
@@ -202,7 +212,7 @@ class Karuta(commands.Cog):
             return
         if message.author.id != KARUTA_ID:
             return
-        if message.guild.id != ELEGANT_GUILD:
+        if message.guild.id != GUILD:
             return
         if message.channel.id not in WHITELISTED_CHANNELS:
             return
@@ -256,7 +266,7 @@ class Karuta(commands.Cog):
         """View your or someone's drops."""
         if not ctx.guild:
             return
-        if not ctx.guild.id == ELEGANT_GUILD:
+        if not ctx.guild.id == GUILD:
             return
 
         if not member:
@@ -285,7 +295,7 @@ class Karuta(commands.Cog):
         """View the karuta drops leaderboard"""
         if not ctx.guild:
             return
-        if not ctx.guild.id == ELEGANT_GUILD:
+        if not ctx.guild.id == GUILD:
             return
 
         if not type.lower() in ["daily", "weekly"]:
