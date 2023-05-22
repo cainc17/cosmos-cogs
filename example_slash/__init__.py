@@ -1,4 +1,4 @@
-from example_slash import ExampleSlash
+from .example_slash import ExampleSlash
 
 from redbot.core.bot import Red
 
