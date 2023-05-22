@@ -4,4 +4,5 @@
 __Cog List__
 
 1. karuta
-2. 
+2. example_slash
+3. 
