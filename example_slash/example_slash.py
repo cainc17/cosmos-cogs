@@ -14,9 +14,9 @@ class ExampleSlash(commands.Cog):
         
          @app_commands.command()
     async def event(self, interaction: discord.Interaction) -> None:
-        await interaction.response.send_message("<@&!")
+        await interaction.response.send_message("<@&985172160106614794>")
 
-        # if your command takes more than 3s to process, you must defer
+        #if your command takes more than 3s to process, you must defer
         # 
         # import asyncio
         # 
